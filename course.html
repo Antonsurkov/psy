@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Карта новой экосистемы — курс Антона Суркова</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .course-hero {
+        background: linear-gradient(135deg, rgba(45,106,79,.04) 0%, rgba(64,145,108,.04) 100%);
+        padding-block: calc(var(--sp) * 10) calc(var(--sp) * 8);
+      }
+
+      .course-hero-content {
+        max-width: 760px;
+      }
+
+      .course-nav {
+        display: flex;
+        gap: calc(var(--sp) * 2);
+        margin-bottom: calc(var(--sp) * 4);
+        flex-wrap: wrap;
+      }
+
+      .course-nav a {
+        display: inline-block;
+        padding: 8px 16px;
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: 24px;
+        font-size: 0.82rem;
+        color: var(--c-text);
+        text-decoration: none;
+        transition: all var(--trans);
+      }
+
+      .course-nav a:hover {
+        background: var(--c-accent);
+        color: #fff;
+        border-color: var(--c-accent);
+      }
+
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: calc(var(--sp) * 4);
+        margin-top: calc(var(--sp) * 4);
+      }
+
+      .module-card {
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: var(--r);
+        padding: calc(var(--sp) * 5);
+        transition: all var(--trans);
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--sp) * 2);
+      }
+
+      .module-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,.08);
+        border-color: var(--c-accent);
+      }
+
+      .module-number {
+        font-family: var(--f-serif);
+        font-size: 2.4rem;
+        font-weight: 600;
+        color: var(--c-accent);
+        line-height: 1;
+      }
+
+      .module-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--c-text);
+        line-height: 1.4;
+      }
+
+      .module-description {
+        font-size: 0.95rem;
+        color: var(--c-muted);
+        line-height: 1.65;
+        flex-grow: 1;
+      }
+
+      .course-intro {
+        background: var(--c-bg-alt);
+        border-left: 4px solid var(--c-accent);
+        padding: calc(var(--sp) * 4) calc(var(--sp) * 5);
+        border-radius: var(--r);
+        margin-bottom: calc(var(--sp) * 8);
+      }
+
+      .course-intro p {
+        font-size: 1rem;
+        color: var(--c-text);
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .modules-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .course-intro {
+          padding: calc(var(--sp) * 3) calc(var(--sp) * 4);
+        }
+
+        .module-card {
+          padding: calc(var(--sp) * 4);
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- COURSE HERO -->
+    <section class="course-hero">
+      <div class="container">
+        <div class="course-hero-content">
+          <p class="section-tag">Онлайн-программа</p>
+          <h1 class="hero-title">Карта новой экосистемы</h1>
+          <p class="section-lead">Для гиперчувствительных людей, выгорающих в традиционной системе, но жаждущих творчества, смысла и подлинного восстановления.</p>
+          <div class="course-nav">
+            <a href="index.html">Вернуться на главную</a>
+            <a href="#contact">Записаться на курс</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section">
+      <div class="container">
+        <div class="course-intro">
+          <p>11 модулей, которые переводят вас из цикла выгорания в экосистему, держащую, восстанавливающую и позволяющую созидать — не вопреки своей природе, а вместе с ней.</p>
+        </div>
+
+        <h2 class="section-title">Программа обучения</h2>
+        <div class="modules-grid">
+
+          <!-- Module 1 -->
+          <div class="module-card">
+            <div class="module-number">1</div>
+            <h3 class="module-title">Заново познакомиться с собственным двигателем</h3>
+            <p class="module-description">Учимся различать состояния окна катехоламинов и возвращаем покой как ресурс, а не скуку.</p>
+          </div>
+
+          <!-- Module 2 -->
+          <div class="module-card">
+            <div class="module-number">2</div>
+            <h3 class="module-title">Инвентаризация: что скрывалось за новизной и гиперфокусом</h3>
+            <p class="module-description">Встречаем скрытые потребности, которые вышли на свет, когда старые способы перестали работать.</p>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="module-card">
+            <div class="module-number">3</div>
+            <h3 class="module-title">Я вне ролей и достижений</h3>
+            <p class="module-description">Формируем устойчивую идентичность, не привязанную к виду деятельности, и опыт безусловного самопринятия.</p>
+          </div>
+
+          <!-- Module 4 -->
+          <div class="module-card">
+            <div class="module-number">4</div>
+            <h3 class="module-title">Новые критерии осмысленной жизни</h3>
+            <p class="module-description">Создаём личный компас: как звучат ваши подлинные «да» и «нет» в работе и образе дня.</p>
+          </div>
+
+          <!-- Module 5 -->
+          <div class="module-card">
+            <div class="module-number">5</div>
+            <h3 class="module-title">Архитектура нейрологичной экосистемы</h3>
+            <p class="module-description">Проектируем портфельную занятость, прототипы идей-мечт и пути возможностей, приходящих к вам, а не наоборот.</p>
+          </div>
+
+          <!-- Module 6 -->
+          <div class="module-card">
+            <div class="module-number">6</div>
+            <h3 class="module-title">Тело, процесс и творчество без цели</h3>
+            <p class="module-description">Внедряем практики процессного творчества, телесной заботы и удовлетворения от вклада вне дофаминового пика.</p>
+          </div>
+
+          <!-- Module 7 -->
+          <div class="module-card">
+            <div class="module-number">7</div>
+            <h3 class="module-title">Моя стая и глубина без стимуляции</h3>
+            <p class="module-description">Строим принадлежность к «своим», глубокие отношения и опыт близости, не нуждающийся в интенсивной деятельности.</p>
+          </div>
+
+          <!-- Module 8 -->
+          <div class="module-card">
+            <div class="module-number">8</div>
+            <h3 class="module-title">Остов безопасности и предсказуемости</h3>
+            <p class="module-description">Создаём минимальную финансовую, бытовую и ритмическую опору, чтобы не выживать, а жить и творить.</p>
+          </div>
+
+          <!-- Module 9 -->
+          <div class="module-card">
+            <div class="module-number">9</div>
+            <h3 class="module-title">Нейрокаркас и среда поддержки</h3>
+            <p class="module-description">Формируем внешнюю структуру (люди, ритуалы, body doubling), которая держит фокус, когда вы не в силах держать сами.</p>
+          </div>
+
+          <!-- Module 10 -->
+          <div class="module-card">
+            <div class="module-number">10</div>
+            <h3 class="module-title">Смысл как живой процесс</h3>
+            <p class="module-description">Интегрируем прожитый опыт и выходим к устойчивому смыслу, не рассыпающемуся после смены впечатлений.</p>
+          </div>
+
+          <!-- Module 11 -->
+          <div class="module-card">
+            <div class="module-number">11</div>
+            <h3 class="module-title">Экосистема в движении</h3>
+            <p class="module-description">Настраиваем циклы адаптации, рефлексии и обновления экосистемы без падения в кризис и самопотерю.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-alt" id="contact">
+      <div class="container contact-wrap">
+        <p class="section-tag">Записаться</p>
+        <h2 class="section-title">Начните своё путешествие</h2>
+        <p class="section-lead">Свяжитесь, чтобы узнать подробности, выбрать удобный формат и расписание.</p>
+        <div class="contact-list">
+          <a href="https://t.me/antonsurkov" class="contact-link" target="_blank" rel="noopener">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 7.13-1.685 7.94c-.126.56-.456.697-.924.433l-2.56-1.887-1.235 1.19c-.137.136-.252.25-.517.25l.185-2.614 4.77-4.307c.207-.185-.045-.288-.322-.103L8.59 14.453l-2.514-.784c-.546-.17-.558-.546.114-.808l9.818-3.787c.455-.165.854.1.922.056z" fill="currentColor"/></svg>
+            @antonsurkov
+          </a>
+          <a href="tel:+79936236733" class="contact-link">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>
+            +7 993 623 67 33
+          </a>
+          <a href="mailto:surokne@gmail.com" class="contact-link">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
+            surokne@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Антон Сурков · Психолог</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
