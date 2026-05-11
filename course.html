@@ -116,6 +116,18 @@
         .module-card {
           padding: calc(var(--sp) * 4);
         }
+
+        .course-hero > .container > div {
+          flex-direction: column-reverse !important;
+          gap: calc(var(--sp) * 4) !important;
+        }
+
+        .course-hero > .container > div > div:last-child {
+          flex: 0 0 auto;
+          width: 100%;
+          max-width: 280px;
+          margin-inline: auto;
+        }
       }
     </style>
   </head>
@@ -124,13 +136,18 @@
     <!-- COURSE HERO -->
     <section class="course-hero">
       <div class="container">
-        <div class="course-hero-content">
-          <p class="section-tag">Онлайн-программа</p>
-          <h1 class="hero-title">Карта новой экосистемы</h1>
-          <p class="section-lead">Для гиперчувствительных людей, выгорающих в традиционной системе, но жаждущих творчества, смысла и подлинного восстановления.</p>
-          <div class="course-nav">
-            <a href="index.html">Вернуться на главную</a>
-            <a href="#contact">Записаться на курс</a>
+        <div style="display: flex; gap: calc(var(--sp) * 6); align-items: center;">
+          <div class="course-hero-content">
+            <p class="section-tag">Онлайн-программа</p>
+            <h1 class="hero-title">Карта новой экосистемы</h1>
+            <p class="section-lead">Для гиперчувствительных людей, выгорающих в традиционной системе, но жаждущих творчества, смысла и подлинного восстановления.</p>
+            <div class="course-nav">
+              <a href="index.html">Вернуться на главную</a>
+              <a href="#contact">Записаться на курс</a>
+            </div>
+          </div>
+          <div style="flex: 0 0 300px; border-radius: var(--r); overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.12);">
+            <img src="иллюстрация_1.png" alt="Карта новой экосистемы" style="width: 100%; height: auto; display: block;">
           </div>
         </div>
       </div>
