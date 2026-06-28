@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHD Superpowers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            max-width: 430px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #F8F9FF;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+
+        .header-right {
+            width: 40px;
+        }
+
+        /* Gallery Screen */
+        .gallery-screen {
+            padding: 0 20px 40px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .gallery-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .gallery-subtitle {
+            font-size: 15px;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .gallery-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFD6BA 100%);
+        }
+
+        .gallery-card-content {
+            padding: 16px 20px 20px;
+        }
+
+        .gallery-card-emoji {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .gallery-card-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+
+        /* Card Detail Screens */
+        .card-screen {
+            display: none;
+            min-height: 100vh;
+            background: #F8F9FF;
+        }
+
+        .card-screen.active {
+            display: block;
+        }
+
+        .card-hero {
+            position: relative;
+            padding: 20px 24px 0;
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFD6BA 100%);
+        }
+
+        .card-hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-emoji-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card-title-section {
+            padding: 20px 24px;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 15px;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            padding: 0 24px;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 8px;
+            border: none;
+            background: #E5E7EB;
+            border-radius: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .tab-btn.sila.active { background: #FBBF24; }
+        .tab-btn.ten.active { background: #6B7280; }
+        .tab-btn.prokachka.active { background: #8B5CF6; }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 0 24px 100px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .sila .section-title { color: #FBBF24; }
+        .ten .section-title { color: #6B7280; }
+        .prokachka .section-title { color: #8B5CF6; }
+
+        .points-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .point-item {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .point-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .sila .point-bullet { background: #FBBF24; }
+        .ten .point-bullet { background: #6B7280; }
+        .prokachka .point-bullet { background: #8B5CF6; }
+
+        .point-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        /* Experiment Screen */
+        .experiment-screen {
+            display: none;
+            min-height: 100vh;
+            background: #F8F9FF;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .experiment-screen.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .experiment-emoji {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .experiment-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .experiment-text {
+            font-size: 16px;
+            color: #6b7280;
+            font-weight: 600;
+            max-width: 280px;
+        }
+
+        /* Rating Section */
+        .rating-section {
+            margin-top: 24px;
+            padding: 24px 20px;
+            background: white;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .rating-question {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .rating-stars .star {
+            font-size: 42px;
+            cursor: pointer;
+            color: #E5E7EB;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            user-select: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .rating-stars .star:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .rating-stars .star.filled {
+            color: #FBBF24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        }
+
+        /* Duolingo-style animations */
+        @keyframes starPop {
+            0% { transform: scale(1) rotate(0deg); }
+            30% { transform: scale(1.4) rotate(-10deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            70% { transform: scale(1.35) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes starBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes starShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        @keyframes starGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.8));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 25px rgba(251, 191, 36, 1));
+                transform: scale(1.1);
+            }
+        }
+
+        .rating-stars .star.pop {
+            animation: starPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .rating-stars .star.bounce {
+            animation: starBounce 0.4s ease;
+        }
+
+        .rating-stars .star.shake {
+            animation: starShake 0.3s ease;
+        }
+
+        .rating-stars .star.glow {
+            animation: starGlow 0.6s ease;
+        }
+
+        /* Ripple effect container */
+        .star-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+            animation: rippleEffect 0.6s ease-out forwards;
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
+
+        /* Card rating display in gallery */
+        .card-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .card-rating .star-filled {
+            color: #FBBF24;
+        }
+
+        .card-rating .star-empty {
+            color: #E5E7EB;
+        }
+
+        .card-rating-label {
+            font-size: 12px;
+            color: #6B7280;
+            margin-right: 4px;
+        }
+
+        /* Experiment Button in Prokachka tab */
+        .experiment-btn-container {
+            margin-top: 24px;
+            padding-bottom: 32px;
+        }
+
+        .btn-experiment {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-experiment:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Load More */
+        .load-more-container {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .load-more-btn {
+            padding: 14px 32px;
+            background: white;
+            border: 2px dashed #C4B5FD;
+            border-radius: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #8B5CF6;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .load-more-btn:hover {
+            background: #F3E8FF;
+            border-style: solid;
+        }
+
+        /* Hide gallery when card is open */
+        .gallery-screen.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Gallery Screen -->
+        <div class="gallery-screen" id="galleryScreen">
+            <div class="gallery-header">
+                <h1 class="gallery-title">Твои суперсилы</h1>
+                <p class="gallery-subtitle">Узнай и оцени свои сильные стороны</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="gallery-card" onclick="openCard(0)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Speed Thinker" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">⚡</div>
+                        <div class="gallery-card-title">Быстрый ум</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(1)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Laser Mode" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🔥</div>
+                        <div class="gallery-card-title">Гиперфокус</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(2)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Ignition" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🌪</div>
+                        <div class="gallery-card-title">Энергия старта</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(3)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Interest Radar" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🎯</div>
+                        <div class="gallery-card-title">Снайпер интереса</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(4)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Pattern Finder" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🧠</div>
+                        <div class="gallery-card-title">Системное понимание</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(5)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Action Instinct" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🧭</div>
+                        <div class="gallery-card-title">Импульс действия</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(6)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Structure Builder" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🧱</div>
+                        <div class="gallery-card-title">Строитель структуры</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(7)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="People Sense" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🎭</div>
+                        <div class="gallery-card-title">Социальный навигатор</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(8)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Pressure Mode" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">💣</div>
+                        <div class="gallery-card-title">Устойчивость к давлению</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(9)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Fragmentation Skill" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🧩</div>
+                        <div class="gallery-card-title">Маленькие шаги</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(10)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Explorer Brain" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🌈</div>
+                        <div class="gallery-card-title">Новизна драйвер</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openCard(11)">
+                    <img src="/Users/antonsurkov/Documents/adhd-cards/images/boy1.png" alt="Meta Skill" class="gallery-card-image">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-emoji">🪞</div>
+                        <div class="gallery-card-title">Самонаблюдение</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" onclick="loadMore()">+ Загрузить ещё карточки</button>
+            </div>
+        </div>
+
+        <!-- Card Detail Screens -->
+        <div class="card-screen" id="cardScreen">
+            <div class="header">
+                <button class="back-btn" onclick="backToGallery()">←</button>
+                <div class="header-title" id="headerTitle">Карточка силы</div>
+                <div class="header-right"></div>
+            </div>
+            
+            <div class="card-hero">
+                <div class="card-image-container">
+                    <img src="" alt="" class="card-hero-image" id="cardHeroImage">
+                    <div class="card-emoji-badge" id="cardEmoji">⚡</div>
+                </div>
+            </div>
+            
+            <div class="card-title-section">
+                <p class="card-subtitle" id="cardSubtitle">Speed Thinker</p>
+            </div>
+            
+            <div class="tab-nav">
+                <button class="tab-btn sila active" onclick="switchTab('sila')">СИЛА</button>
+                <button class="tab-btn ten" onclick="switchTab('ten')">ТЕНЬ</button>
+                <button class="tab-btn prokachka" onclick="switchTab('prokachka')">ПРОКАЧКА</button>
+            </div>
+            
+            <div class="tab-content sila active" id="tab-sila">
+                <div class="section-title">ТВОИ СУПЕРСПОСОБНОСТИ</div>
+                <div class="points-list" id="silaList"></div>
+                <div class="rating-section">
+                    <div class="rating-question">Насколько это про тебя?</div>
+                    <div class="rating-stars" id="silaRating">
+                        <span class="star" data-value="1">☆</span>
+                        <span class="star" data-value="2">☆</span>
+                        <span class="star" data-value="3">☆</span>
+                        <span class="star" data-value="4">☆</span>
+                        <span class="star" data-value="5">☆</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content ten" id="tab-ten">
+                <div class="section-title">ЗОНЫ РОСТА</div>
+                <div class="points-list" id="tenList"></div>
+                <div class="rating-section">
+                    <div class="rating-question">Насколько это про тебя?</div>
+                    <div class="rating-stars" id="tenRating">
+                        <span class="star" data-value="1">☆</span>
+                        <span class="star" data-value="2">☆</span>
+                        <span class="star" data-value="3">☆</span>
+                        <span class="star" data-value="4">☆</span>
+                        <span class="star" data-value="5">☆</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content prokachka" id="tab-prokachka">
+                <div class="section-title">КАК РАЗВИВАТЬ</div>
+                <div class="points-list" id="prokachkaList"></div>
+                <div class="experiment-btn-container">
+                    <button class="btn-experiment" onclick="openExperiment()">🧪 Эксперимент</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Experiment Screen -->
+        <div class="experiment-screen" id="experimentScreen">
+            <div class="experiment-emoji">🧪</div>
+            <h2 class="experiment-title">Эксперимент</h2>
+            <p class="experiment-text">Этот раздел появится совсем скоро. Готовься к практическим заданиям!</p>
+            <div style="margin-top: 40px;">
+                <button class="btn-secondary" onclick="backToCard()">← Назад к карточке</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cardsData = [
+            {
+                emoji: '⚡',
+                title: 'Быстрый ум',
+                subtitle: 'Speed Thinker',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'быстро схватываешь идею',
+                    'моментально понимаешь суть',
+                    'легко находишь нестандартные ответы'
+                ],
+                ten: [
+                    'скучные объяснения "выключают"',
+                    'можешь пропускать детали',
+                    'сложно удерживать последовательность'
+                ],
+                prokachka: [
+                    'удержание шага 1–2–3',
+                    'проверка деталей',
+                    'доведение до конца'
+                ]
+            },
+            {
+                emoji: '🔥',
+                title: 'Гиперфокус',
+                subtitle: 'Laser Mode',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'можешь уходить в задачу на часы',
+                    'не замечаешь время',
+                    'супер-глубина'
+                ],
+                ten: [
+                    'сложно переключаться',
+                    'можно "залипнуть" не туда',
+                    'игнорируешь остальное'
+                ],
+                prokachka: [
+                    'переключение режимов',
+                    'контроль выхода',
+                    'таймеры/якоря'
+                ]
+            },
+            {
+                emoji: '🌪',
+                title: 'Энергия старта',
+                subtitle: 'Ignition',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'умеешь резко включаться',
+                    'быстрый старт',
+                    'импульсные действия'
+                ],
+                ten: [
+                    'сложно делать медленные процессы',
+                    'бросаешь после старта',
+                    'скачки мотивации'
+                ],
+                prokachka: [
+                    'удержание темпа',
+                    'маленькие шаги',
+                    'завершение циклов'
+                ]
+            },
+            {
+                emoji: '🎯',
+                title: 'Снайпер интереса',
+                subtitle: 'Interest Radar',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'мгновенно чувствуешь "интересно/неинтересно"',
+                    'хорошо выбираешь цели',
+                    'быстро находишь вовлекающее'
+                ],
+                ten: [
+                    '"неинтересное" почти невозможно делать',
+                    'падает дисциплина',
+                    'избегание скуки'
+                ],
+                prokachka: [
+                    'создание интереса',
+                    'геймификация задач',
+                    'работа с "серой зоной"'
+                ]
+            },
+            {
+                emoji: '🧠',
+                title: 'Системное понимание',
+                subtitle: 'Pattern Finder',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'видишь связи между вещами',
+                    'понимаешь системы',
+                    'быстро находишь закономерности'
+                ],
+                ten: [
+                    'можешь усложнять простое',
+                    'теряешься в деталях реализации',
+                    '"перепридумываешь"'
+                ],
+                prokachka: [
+                    'упрощение',
+                    'фокус на шаге',
+                    'практическое применение'
+                ]
+            },
+            {
+                emoji: '🧭',
+                title: 'Импульс действия',
+                subtitle: 'Action Instinct',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'делаешь быстрее чем думаешь',
+                    'не зависаешь',
+                    'решаешь через действие'
+                ],
+                ten: [
+                    'ошибки из-за поспешности',
+                    'не всегда проверяешь последствия',
+                    'сложно планировать'
+                ],
+                prokachka: [
+                    'пауза перед действием',
+                    'проверка результата',
+                    'стратегия вместо реакции'
+                ]
+            },
+            {
+                emoji: '🧱',
+                title: 'Строитель структуры',
+                subtitle: 'Structure Builder',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'можешь организовать хаос',
+                    'любишь системы',
+                    'создаешь порядок'
+                ],
+                ten: [
+                    'раздражает хаос',
+                    'сложно в "живых" ситуациях',
+                    'перегружаешь деталями'
+                ],
+                prokachka: [
+                    'гибкость',
+                    'минимальные структуры',
+                    'адаптация под хаос'
+                ]
+            },
+            {
+                emoji: '🎭',
+                title: 'Социальный навигатор',
+                subtitle: 'People Sense',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'чувствуешь людей',
+                    'понимаешь настроение',
+                    'умеешь подстраиваться'
+                ],
+                ten: [
+                    'перегруз от людей',
+                    'зависимость от оценки',
+                    'эмоциональные качели'
+                ],
+                prokachka: [
+                    'границы',
+                    'фильтрация общения',
+                    'устойчивость к оценке'
+                ]
+            },
+            {
+                emoji: '💣',
+                title: 'Устойчивость к давлению',
+                subtitle: 'Pressure Mode',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'включаешься в дедлайне',
+                    'работаешь под стрессом',
+                    'мобилизация'
+                ],
+                ten: [
+                    'прокрастинация без давления',
+                    'жизнь "в последний момент"',
+                    'нестабильность'
+                ],
+                prokachka: [
+                    'ранний старт',
+                    'мягкое давление',
+                    'микродедлайны'
+                ]
+            },
+            {
+                emoji: '🧩',
+                title: 'Маленькие шаги',
+                subtitle: 'Fragmentation Skill',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'умеешь дробить сложное',
+                    'видишь части задачи',
+                    'упрощение'
+                ],
+                ten: [
+                    'иногда не видишь цель',
+                    'застреваешь в мелочах',
+                    'потеря смысла'
+                ],
+                prokachka: [
+                    'держать цель',
+                    'сборка в целое',
+                    'приоритизация'
+                ]
+            },
+            {
+                emoji: '🌈',
+                title: 'Новизна драйвер',
+                subtitle: 'Explorer Brain',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'любишь новое',
+                    'быстро учишься',
+                    'адаптивность'
+                ],
+                ten: [
+                    'скука убивает внимание',
+                    'бросаешь старое',
+                    'недоведенные проекты'
+                ],
+                prokachka: [
+                    'завершение циклов',
+                    'удержание рутины',
+                    'повторение'
+                ]
+            },
+            {
+                emoji: '🪞',
+                title: 'Самонаблюдение',
+                subtitle: 'Meta Skill',
+                image: 'images/boy1.png',
+                imageTen: 'images/boy3.png',
+                imageProkachka: 'images/boy4.png',
+                sila: [
+                    'замечаешь свои состояния',
+                    'можешь анализировать себя',
+                    'учишься быстрее других'
+                ],
+                ten: [
+                    'самокритика',
+                    'перегруз анализом',
+                    '"слишком много думаешь"'
+                ],
+                prokachka: [
+                    'мягкое наблюдение',
+                    'без оценки',
+                    'экспериментальный подход'
+                ]
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        // Rating functions
+        function getRatingKey(cardIndex, type) {
+            return `adhd_card_${cardIndex}_${type}`;
+        }
+
+        function saveRating(cardIndex, type, rating) {
+            localStorage.setItem(getRatingKey(cardIndex, type), rating);
+            updateGalleryRating(cardIndex);
+        }
+
+        function getRating(cardIndex, type) {
+            return parseInt(localStorage.getItem(getRatingKey(cardIndex, type))) || 0;
+        }
+
+        function renderRating(elementId, cardIndex, type) {
+            const container = document.getElementById(elementId);
+            const currentRating = getRating(cardIndex, type);
+
+            container.querySelectorAll('.star').forEach((star, index) => {
+                const value = index + 1;
+                if (value <= currentRating) {
+                    star.textContent = '★';
+                    star.classList.add('filled');
+                } else {
+                    star.textContent = '☆';
+                    star.classList.remove('filled');
+                }
+            });
+        }
+
+        function setupRatingHandlers(elementId, cardIndex, type) {
+            const container = document.getElementById(elementId);
+            const stars = container.querySelectorAll('.star');
+
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = parseInt(this.dataset.value);
+                    saveRating(cardIndex, type, value);
+                    renderRating(elementId, cardIndex, type);
+                });
+
+                star.addEventListener('mouseenter', function() {
+                    const value = parseInt(this.dataset.value);
+                    stars.forEach((s, i) => {
+                        if (i < value) {
+                            s.textContent = '★';
+                        } else {
+                            s.textContent = '☆';
+                        }
+                    });
+                });
+            });
+
+            container.addEventListener('mouseleave', function() {
+                renderRating(elementId, cardIndex, type);
+            });
+        }
+
+        function getCardRatingHTML(cardIndex) {
+            const silaRating = getRating(cardIndex, 'sila');
+            const tenRating = getRating(cardIndex, 'ten');
+
+            let html = '';
+
+            if (silaRating > 0) {
+                html += `<div class="card-rating"><span class="card-rating-label">Сила:</span>${renderStarsHTML(silaRating)}</div>`;
+            }
+
+            if (tenRating > 0) {
+                html += `<div class="card-rating"><span class="card-rating-label">Тень:</span>${renderStarsHTML(tenRating)}</div>`;
+            }
+
+            return html;
+        }
+
+        function renderStarsHTML(rating) {
+            let html = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    html += '<span class="star-filled">★</span>';
+                } else {
+                    html += '<span class="star-empty">☆</span>';
+                }
+            }
+            return html;
+        }
+
+        function updateGalleryRating(cardIndex) {
+            const cardElement = document.querySelector(`.gallery-card[onclick="openCard(${cardIndex})"] .gallery-card-content`);
+            if (cardElement) {
+                const existingRating = cardElement.querySelector('.card-ratings');
+                if (existingRating) {
+                    existingRating.remove();
+                }
+
+                const ratingHTML = getCardRatingHTML(cardIndex);
+                if (ratingHTML) {
+                    const ratingsDiv = document.createElement('div');
+                    ratingsDiv.className = 'card-ratings';
+                    ratingsDiv.innerHTML = ratingHTML;
+                    cardElement.appendChild(ratingsDiv);
+                }
+            }
+        }
+
+        function initGalleryRatings() {
+            cardsData.forEach((_, index) => {
+                updateGalleryRating(index);
+            });
+        }
+
+        function openCard(index) {
+            currentCardIndex = index;
+            const card = cardsData[index];
+            
+            document.getElementById('cardHeroImage').src = card.image;
+            document.getElementById('cardEmoji').textContent = card.emoji;
+            document.getElementById('cardSubtitle').textContent = card.subtitle;
+            document.getElementById('headerTitle').textContent = card.title;
+            
+            renderList('silaList', card.sila);
+            renderList('tenList', card.ten);
+            renderList('prokachkaList', card.prokachka);
+
+            // Load and setup ratings
+            renderRating('silaRating', index, 'sila');
+            renderRating('tenRating', index, 'ten');
+            setupRatingHandlers('silaRating', index, 'sila');
+            setupRatingHandlers('tenRating', index, 'ten');
+
+            switchTab('sila');
+            
+            document.getElementById('galleryScreen').classList.add('hidden');
+            document.getElementById('cardScreen').classList.add('active');
+        }
+
+        function renderList(elementId, items) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = items.map(item => `
+                <div class="point-item">
+                    <div class="point-bullet"></div>
+                    <div class="point-text">${item}</div>
+                </div>
+            `).join('');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`.tab-btn.${tabName}`).classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            
+            // Меняем изображение в зависимости от вкладки
+            const card = cardsData[currentCardIndex];
+            const heroImage = document.getElementById('cardHeroImage');
+            
+            if (tabName === 'ten' && card.imageTen) {
+                heroImage.src = card.imageTen;
+            } else if (tabName === 'prokachka' && card.imageProkachka) {
+                heroImage.src = card.imageProkachka;
+            } else {
+                heroImage.src = card.image;
+            }
+        }
+
+        function backToGallery() {
+            document.getElementById('galleryScreen').classList.remove('hidden');
+            document.getElementById('cardScreen').classList.remove('active');
+            document.getElementById('experimentScreen').classList.remove('active');
+        }
+
+        function openExperiment() {
+            document.getElementById('cardScreen').classList.remove('active');
+            document.getElementById('experimentScreen').classList.add('active');
+        }
+
+        function backToCard() {
+            document.getElementById('experimentScreen').classList.remove('active');
+            document.getElementById('cardScreen').classList.add('active');
+        }
+
+        function loadMore() {
+            alert('Здесь будут загружаться новые карточки!');
+        }
+
+        // Initialize ratings display on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initGalleryRatings();
+        });
+    </script>
+</body>
+</html>
