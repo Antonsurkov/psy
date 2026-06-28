@@ -1011,7 +1011,10 @@
         }
 
         function setupRatingHandlers(elementId, cardIndex, type) {
-            const container = document.getElementById(elementId);
+            const oldContainer = document.getElementById(elementId);
+            const container = oldContainer.cloneNode(true);
+            oldContainer.parentNode.replaceChild(container, oldContainer);
+
             const stars = container.querySelectorAll('.star');
 
             stars.forEach(star => {
