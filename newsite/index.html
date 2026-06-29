@@ -197,6 +197,7 @@
             display: flex;
             padding: 0 24px;
             gap: 8px;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -286,39 +287,357 @@
             font-weight: 600;
         }
 
-        /* Experiment Screen */
+        /* Experiment Screen - Duolingo Style */
         .experiment-screen {
             display: none;
             min-height: 100vh;
             background: #F8F9FF;
-            padding: 40px 24px;
-            text-align: center;
+            padding: 20px 20px 40px;
         }
 
         .experiment-screen.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .experiment-header {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .experiment-back-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: white;
+            border: none;
+            display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 20px;
+            transition: transform 0.2s;
         }
 
-        .experiment-emoji {
-            font-size: 80px;
-            margin-bottom: 24px;
+        .experiment-back-btn:hover {
+            transform: scale(1.05);
         }
 
-        .experiment-title {
-            font-size: 24px;
-            font-weight: 900;
+        .experiment-header-title {
+            font-size: 18px;
+            font-weight: 800;
             color: #1a1a2e;
+        }
+
+        .experiment-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Duolingo-style cards */
+        .duo-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border: 2px solid transparent;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .duo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+        }
+
+        .duo-card.purple {
+            border-color: #E0D5F9;
+            background: linear-gradient(135deg, #FAF8FF 0%, #FFFFFF 100%);
+        }
+
+        .duo-card.orange {
+            border-color: #FFD6BA;
+            background: linear-gradient(135deg, #FFF8F5 0%, #FFFFFF 100%);
+        }
+
+        .duo-card.green {
+            border-color: #B8E0C8;
+            background: linear-gradient(135deg, #F5FBF7 0%, #FFFFFF 100%);
+        }
+
+        .duo-card.yellow {
+            border-color: #FDE68A;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FFFFFF 100%);
+        }
+
+        .duo-card-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .duo-card-title .emoji {
+            font-size: 24px;
+        }
+
+        .duo-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #4B5563;
+            font-weight: 600;
+        }
+
+        .duo-text p {
             margin-bottom: 12px;
         }
 
-        .experiment-text {
-            font-size: 16px;
-            color: #6b7280;
+        .duo-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .duo-highlight {
+            background: linear-gradient(120deg, #FFD6BA 0%, #FFD6BA 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        .duo-highlight.purple {
+            background: linear-gradient(120deg, #E0D5F9 0%, #E0D5F9 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+        }
+
+        .duo-highlight.green {
+            background: linear-gradient(120deg, #B8E0C8 0%, #B8E0C8 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+        }
+
+        /* Comparison block */
+        .duo-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .duo-compare-item {
+            background: #F3F4F6;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .duo-compare-item.chips {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+        }
+
+        .duo-compare-item.meat {
+            background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+        }
+
+        .duo-compare-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .duo-compare-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        .duo-compare-text {
+            font-size: 12px;
+            color: #6B7280;
             font-weight: 600;
-            max-width: 280px;
+        }
+
+        /* Bullet list */
+        .duo-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+
+        .duo-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #4B5563;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .duo-list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .duo-bullet {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        .duo-bullet.orange {
+            background: #FFD6BA;
+            color: #92400E;
+        }
+
+        .duo-bullet.purple {
+            background: #E0D5F9;
+            color: #6B21A8;
+        }
+
+        .duo-bullet.green {
+            background: #B8E0C8;
+            color: #166534;
+        }
+
+        /* Experiment task card */
+        .duo-task-card {
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            border-radius: 24px;
+            padding: 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .duo-task-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .duo-task-title {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .duo-task-text {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.95;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .duo-task-highlight {
+            background: rgba(255,255,255,0.25);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+        }
+
+        /* Steps */
+        .duo-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .duo-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 12px 16px;
+            border-radius: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .duo-step-number {
+            width: 28px;
+            height: 28px;
+            background: white;
+            color: #7C3AED;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .duo-step-text {
+            font-size: 13px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        /* Tip box */
+        .duo-tip {
+            background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+            border: 2px solid #86EFAC;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 8px;
+        }
+
+        .duo-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .duo-tip-icon {
+            font-size: 20px;
+        }
+
+        .duo-tip-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #166534;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .duo-tip-text {
+            font-size: 14px;
+            color: #166534;
+            font-weight: 600;
+            line-height: 1.5;
         }
 
         /* Rating Section */
@@ -508,6 +827,291 @@
         .gallery-screen.hidden {
             display: none;
         }
+
+        /* Interactive Experiment Styles */
+        .duo-task-card .btn-start-experiment {
+            width: 100%;
+            padding: 12px 16px;
+            margin-top: 16px;
+            background: white;
+            color: #7C3AED;
+            border: 2px solid white;
+            border-radius: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .duo-task-card .btn-start-experiment:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Interactive experiment modal styles */
+        .interactive-experiment {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .interactive-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Moments input section */
+        .moments-section {
+            margin-bottom: 24px;
+        }
+
+        .section-label {
+            font-size: 15px;
+            font-weight: 800;
+            color: #374151;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .moment-input-wrapper {
+            margin-bottom: 12px;
+        }
+
+        .moment-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #374151;
+            transition: all 0.2s;
+            background: #F9FAFB;
+        }
+
+        .moment-input:focus {
+            outline: none;
+            border-color: #8B5CF6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .moment-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        /* Brightest moment selector */
+        .brightest-section {
+            margin: 24px 0;
+        }
+
+        .brightest-question {
+            font-size: 15px;
+            font-weight: 800;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        .brightest-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .brightest-option {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #F9FAFB;
+        }
+
+        .brightest-option:hover {
+            background: #F3E8FF;
+            border-color: #D8B4FE;
+        }
+
+        .brightest-option.selected {
+            background: linear-gradient(135deg, #E0D5F9 0%, #EDE9FE 100%);
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .brightest-flame {
+            font-size: 24px;
+            margin-right: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .brightest-option.selected .brightest-flame {
+            animation: flameGlow 0.6s ease infinite;
+            filter: drop-shadow(0 0 8px #EA580C);
+        }
+
+        @keyframes flameGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px #EA580C); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 16px #EA580C); }
+        }
+
+        .brightest-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4B5563;
+            flex: 1;
+        }
+
+        .brightest-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #D1D5DB;
+            border-radius: 50%;
+            margin-left: 12px;
+            transition: all 0.2s;
+        }
+
+        .brightest-option.selected .brightest-radio {
+            background: #8B5CF6;
+            border-color: #8B5CF6;
+            box-shadow: inset 0 0 0 4px white;
+        }
+
+        /* Timer section */
+        .timer-section {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .timer-label {
+            font-size: 14px;
+            font-weight: 800;
+            color: #92400E;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .timer-display {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a1a2e;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 16px;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .timer-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #FCD34D;
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #92400E;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .timer-btn:hover {
+            background: #FFFBEB;
+        }
+
+        .timer-btn.active {
+            background: #92400E;
+            color: white;
+            border-color: #92400E;
+        }
+
+        /* Curiosity question */
+        .curiosity-section {
+            background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .curiosity-question {
+            font-size: 18px;
+            font-weight: 800;
+            color: #166534;
+            margin-bottom: 20px;
+        }
+
+        .curiosity-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .curiosity-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid #86EFAC;
+            border-radius: 14px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+            color: #166534;
+        }
+
+        .curiosity-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 101, 52, 0.2);
+        }
+
+        .curiosity-btn.yes {
+            background: linear-gradient(135deg, #86EFAC 0%, #4ADE80 100%);
+            color: white;
+            border-color: #4ADE80;
+        }
+
+        .curiosity-btn.no {
+            background: linear-gradient(135deg, #FCA5A5 0%, #F87171 100%);
+            color: white;
+            border-color: #F87171;
+        }
+
+        /* Status badge in gallery */
+        .card-status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .card-status-badge.completed {
+            background: linear-gradient(135deg, #4ADE80 0%, #22C55E 100%);
+        }
     </style>
 </head>
 <body>
@@ -637,10 +1241,6 @@
                 </div>
             </div>
             
-            <div class="card-title-section">
-                <p class="card-subtitle" id="cardSubtitle">Speed Thinker</p>
-            </div>
-            
             <div class="tab-nav">
                 <button class="tab-btn sila active" onclick="switchTab('sila')">СИЛА</button>
                 <button class="tab-btn ten" onclick="switchTab('ten')">ТЕНЬ</button>
@@ -648,7 +1248,6 @@
             </div>
             
             <div class="tab-content sila active" id="tab-sila">
-                <div class="section-title">ТВОИ СУПЕРСПОСОБНОСТИ</div>
                 <div class="points-list" id="silaList"></div>
                 <div class="rating-section">
                     <div class="rating-question">Насколько это про тебя?</div>
@@ -663,7 +1262,6 @@
             </div>
 
             <div class="tab-content ten" id="tab-ten">
-                <div class="section-title">ЗОНЫ РОСТА</div>
                 <div class="points-list" id="tenList"></div>
                 <div class="rating-section">
                     <div class="rating-question">Насколько это про тебя?</div>
@@ -678,7 +1276,6 @@
             </div>
             
             <div class="tab-content prokachka" id="tab-prokachka">
-                <div class="section-title">КАК РАЗВИВАТЬ</div>
                 <div class="points-list" id="prokachkaList"></div>
                 <div class="experiment-btn-container">
                     <button class="btn-experiment" onclick="openExperiment()">🧪 Эксперимент</button>
@@ -689,11 +1286,12 @@
 
         <!-- Experiment Screen -->
         <div class="experiment-screen" id="experimentScreen">
-            <div class="experiment-emoji">🧪</div>
-            <h2 class="experiment-title">Эксперимент</h2>
-            <p class="experiment-text">Этот раздел появится совсем скоро. Готовься к практическим заданиям!</p>
-            <div style="margin-top: 40px;">
-                <button class="btn-secondary" onclick="backToCard()">← Назад к карточке</button>
+            <div class="experiment-header">
+                <button class="experiment-back-btn" onclick="backToCard()">←</button>
+                <div class="experiment-header-title">🧪 Эксперимент</div>
+            </div>
+            <div class="experiment-content" id="experimentContent">
+                <!-- Content will be inserted here -->
             </div>
         </div>
     </div>
@@ -743,8 +1341,115 @@
                 prokachka: [
                     'переключение режимов',
                     'контроль выхода',
-                    'таймеры/якоря'
-                ]
+                    'таймеры/якоря',
+                    'Найти любимое дело вместо зависания в телефоне'
+                ],
+                experiment: `
+                <div class="duo-card orange">
+                    <div class="duo-card-title"><span class="emoji">💪</span> Управляй гиперфокусом: найди любимое дело вместо зависания в телефоне</div>
+                    <div class="duo-text">
+                        <p>Твой гиперфокус — это твоя <span class="duo-highlight">суперсила</span>: умение с головой уходить в то, что интересно.</p>
+                        <p>В играх и соцсетях это происходит почти само — там всё набито специальными крючками, которые дёргают за интерес и не дают оторваться.</p>
+                    </div>
+                    <div class="duo-comparison">
+                        <div class="duo-compare-item chips">
+                            <div class="duo-compare-icon">🥔</div>
+                            <div class="duo-compare-label">Чипсы</div>
+                            <div class="duo-compare-text">Вкусно, но не дают<br>долгого и глубокого<br>насыщения</div>
+                        </div>
+                        <div class="duo-compare-item meat">
+                            <div class="duo-compare-icon">🥩</div>
+                            <div class="duo-compare-label">Мясо</div>
+                            <div class="duo-compare-text">Сложнее, зато питает<br>надолго и делает<br>сильнее</div>
+                        </div>
+                    </div>
+                    <div class="duo-text">
+                        <p>Твой гиперфокус — <span class="duo-highlight purple">не враг, а топливо</span>. Просто надо научиться самому переключать его с «чипсов» на поиск своего «мяса».</p>
+                    </div>
+                </div>
+
+                <div class="duo-card purple">
+                    <div class="duo-card-title"><span class="emoji">🧪</span> Воспринимай жизнь как лабораторию</div>
+                    <div class="duo-text">
+                        <p>Никто не требует выбрать одно хобби навсегда. Работает метод <span class="duo-highlight">мини-экспериментов</span>.</p>
+                        <p>Увидел что-то и загорелся: «Ого, как круто! Хочу так же» — сразу иди пробовать, без грандиозных целей.</p>
+                    </div>
+                    <ul class="duo-list">
+                        <li class="duo-list-item">
+                            <span class="duo-bullet orange">✗</span>
+                            <span>Не «стать художником уровня Серова»</span>
+                        </li>
+                        <li class="duo-list-item">
+                            <span class="duo-bullet green">✓</span>
+                            <span>А «пять дней подряд рисовать по 20 минут что попало»</span>
+                        </li>
+                    </ul>
+                    <div class="duo-text">
+                        <p>Цели-рекорды убивают любопытство и рождают стресс. <span class="duo-highlight green">Важен сам процесс, а не результат.</span></p>
+                    </div>
+                </div>
+
+                <div class="duo-card green">
+                    <div class="duo-card-title"><span class="emoji">👥</span> Ищи команду</div>
+                    <div class="duo-text">
+                        <p>Интерес угаснет, если не делиться и не получать отклик. Поэтому ищи команду:</p>
+                    </div>
+                    <ul class="duo-list">
+                        <li class="duo-list-item">
+                            <span class="duo-bullet purple">⚽</span>
+                            <span>Футбол, киберспорт, столярный кружок</span>
+                        </li>
+                        <li class="duo-list-item">
+                            <span class="duo-bullet purple">💻</span>
+                            <span>Программирование через создание живого проекта</span>
+                        </li>
+                        <li class="duo-list-item">
+                            <span class="duo-bullet purple">📸</span>
+                            <span>Делись снимками, получай отклик</span>
+                        </li>
+                    </ul>
+                    <div class="duo-tip">
+                        <div class="duo-tip-header">
+                            <span class="duo-tip-icon">💡</span>
+                            <span class="duo-tip-label">Важно</span>
+                        </div>
+                        <div class="duo-tip-text">Ошибка думать, что ты «не творческий» или «не спортивный». Это установка на данность — враньё. Ты можешь быть кем угодно!</div>
+                    </div>
+                </div>
+
+                <div class="duo-task-card">
+                    <div class="duo-task-title"><span class="emoji">🔍</span> Твой первый эксперимент: «Охота на "Вау!"»</div>
+                    <div class="duo-task-text">
+                        <p>Сегодня и завтра замечай всё, от чего внутри вспыхивает <span class="duo-task-highlight">«Вау, как это сделано?»</span></p>
+                        <p>Это может быть чей-то трюк на скейте, необычная мелодия, крутой рисунок, механизм, что угодно.</p>
+                    </div>
+                    <div class="duo-steps">
+                        <div class="duo-step">
+                            <span class="duo-step-number">1</span>
+                            <span class="duo-step-text">Запиши три таких момента</span>
+                        </div>
+                        <div class="duo-step">
+                            <span class="duo-step-number">2</span>
+                            <span class="duo-step-text">Выбери самый яркий</span>
+                        </div>
+                        <div class="duo-step">
+                            <span class="duo-step-number">3</span>
+                            <span class="duo-step-text">Дай себе <span class="duo-task-highlight">20 минут</span> на микро-исследование</span>
+                        </div>
+                    </div>
+                    <div class="duo-task-text" style="margin-top: 16px;">
+                        <p>Без обязательств, без результата. Просто попробуй «на вкус» и почувствуй, <span class="duo-task-highlight">загорается ли любопытство</span>.</p>
+                    </div>
+                    <button class="btn-start-experiment" onclick="startInteractiveExperiment(1)">🚀 Начать</button>
+                </div>
+
+                <div class="duo-card yellow">
+                    <div class="duo-card-title"><span class="emoji">🔦</span> Это твой прожектор</div>
+                    <div class="duo-text" style="text-align: center; font-size: 16px;">
+                        <p>Этот прожектор ищет настоящее, <span class="duo-highlight">«мясное» увлечение</span> — то, которое насыщает и помогает расти! 🌱</p>
+                    </div>
+                </div>
+                `
             },
             {
                 emoji: '🌪',
@@ -928,7 +1633,145 @@
                     'держать цель',
                     'сборка в целое',
                     'приоритизация'
-                ]
+                ],
+                experiment: `
+                <div class="duo-card orange">
+                    <div class="duo-card-title"><span class="emoji">🦸‍♂️</span> Привет, герой!</div>
+                    <div class="duo-text">
+                        <p>Сейчас мы будем учиться <span class="duo-highlight">«разделывать»</span> большие и страшные задачи, как настоящие профи.</p>
+                        <p><strong>Правила игры:</strong> Читай каждый пункт по порядку. Если сделал — нажимай <span class="duo-highlight green">ДА / СДЕЛАНО</span> или ставь галочку ✅. Ты справишься!</p>
+                    </div>
+                </div>
+
+                <div class="duo-card purple">
+                    <div class="duo-card-title"><span class="emoji">👀</span> Шаг 1. Посмотри на задачу</div>
+                    <div class="duo-text">
+                        <p><em>(Снимаем тревогу)</em></p>
+                        <p>Скажи громко-громко (прямо вслух!):</p>
+                        <p><span class="duo-highlight">«Это СЛОН! Он огромный и страшный!»</span></p>
+                        <p>Теперь признайся себе: да, он большой. Но мы не боимся.</p>
+                    </div>
+                    <div class="curiosity-section" style="margin: 16px 0 0 0;">
+                        <div class="curiosity-question" style="font-size: 15px;">Ты посмотрел на слона и назвал его?</div>
+                        <div class="curiosity-buttons">
+                            <button class="curiosity-btn yes" onclick="toggleStepCheck(this)">✅ ДА</button>
+                            <button class="curiosity-btn no" onclick="toggleStepCheck(this)">❌ НЕТ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duo-card green">
+                    <div class="duo-card-title"><span class="emoji">🔪</span> Шаг 2. Вспомни про нож</div>
+                    <div class="duo-text">
+                        <p><em>(Снижаем импульсивность)</em></p>
+                        <p>Теперь скажи волшебную фразу:</p>
+                        <p><span class="duo-highlight">«Целиком я его не съем, но у меня есть НОЖ. Я буду резать его на кусочки».</span></p>
+                        <p>Это значит: ты знаешь, что делать, и всё под контролем.</p>
+                    </div>
+                    <div class="curiosity-section" style="margin: 16px 0 0 0;">
+                        <div class="curiosity-question" style="font-size: 15px;">Ты сказал, что будешь резать слона на кусочки?</div>
+                        <div class="curiosity-buttons">
+                            <button class="curiosity-btn yes" onclick="toggleStepCheck(this)">✅ ДА</button>
+                            <button class="curiosity-btn no" onclick="toggleStepCheck(this)">❌ НЕТ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duo-card yellow">
+                    <div class="duo-card-title"><span class="emoji">💨</span> Шаг 3. Сделай «насос»</div>
+                    <div class="duo-text">
+                        <p><em>(Перезагружаем внимание)</em></p>
+                        <p>Встань (или сядь ровно).</p>
+                        <p><strong>ВДОХ</strong> — подними руки вверх, потянись к небу.</p>
+                        <p><strong>ВЫДОХ</strong> — резко опусти руки на стол и громко выдохни: «Ф-ф-ф-ф» (как будто спускаешь шину).</p>
+                        <p>Скажи про себя: <span class="duo-highlight purple">«Я здесь. Я готов».</span></p>
+                    </div>
+                    <div class="curiosity-section" style="margin: 16px 0 0 0;">
+                        <div class="curiosity-question" style="font-size: 15px;">Ты подышал и настроился?</div>
+                        <div class="curiosity-buttons">
+                            <button class="curiosity-btn yes" onclick="toggleStepCheck(this)">✅ ДА</button>
+                            <button class="curiosity-btn no" onclick="toggleStepCheck(this)">❌ НЕТ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duo-card orange">
+                    <div class="duo-card-title"><span class="emoji">🧹</span> Шаг 4. Наведи порядок в голове</div>
+                    <div class="duo-text">
+                        <p><em>(Боремся с отвлекалками)</em></p>
+                        <p>Ответь себе на два вопроса (можно шепотом):</p>
+                        <ul class="duo-list">
+                            <li class="duo-list-item">
+                                <span class="duo-bullet green">1</span>
+                                <span><strong>Что здесь самое главное?</strong> (Найди это глазами)</span>
+                            </li>
+                            <li class="duo-list-item">
+                                <span class="duo-bullet green">2</span>
+                                <span><strong>Что мне мешает?</strong> (Лишние картинки или буквы?)</span>
+                            </li>
+                        </ul>
+                        <p>Если мешает — закрой лишнее линейкой или обведи самое главное слово маркером. Сделай так, чтобы в глаза бросалась только нужная часть.</p>
+                    </div>
+                    <div class="curiosity-section" style="margin: 16px 0 0 0;">
+                        <div class="curiosity-question" style="font-size: 15px;">Ты убрал всё лишнее и видишь главное?</div>
+                        <div class="curiosity-buttons">
+                            <button class="curiosity-btn yes" onclick="toggleStepCheck(this)">✅ ДА</button>
+                            <button class="curiosity-btn no" onclick="toggleStepCheck(this)">❌ НЕТ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duo-card purple">
+                    <div class="duo-card-title"><span class="emoji">🍴</span> Шаг 5. Откуси первый кусочек</div>
+                    <div class="duo-text">
+                        <p><em>(Стартовый импульс)</em></p>
+                        <p>Мы не делаем всё сразу. Мы берем <span class="duo-highlight">ОДИН</span> кусочек.</p>
+                        <p>Скажи:</p>
+                        <p><span class="duo-highlight green">«Мой первый кусочек — это...»</span> (например: «прочитать первую строчку» или «решить только 1 пример»).</p>
+                        <p>Всё. Больше ничего не надо. Только это.</p>
+                    </div>
+                    <div class="curiosity-section" style="margin: 16px 0 0 0;">
+                        <div class="curiosity-question" style="font-size: 15px;">Ты знаешь свой первый маленький шаг?</div>
+                        <div class="curiosity-buttons">
+                            <button class="curiosity-btn yes" onclick="toggleStepCheck(this); checkAllStepsCompleted();">✅ ДА</button>
+                            <button class="curiosity-btn no" onclick="toggleStepCheck(this)">❌ НЕТ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duo-task-card">
+                    <div class="duo-task-title"><span class="emoji">🎉</span> Шаг 6. Похвали себя!</div>
+                    <div class="duo-task-text">
+                        <p><em>(Фиксация успеха)</em></p>
+                        <p>Стоп! Ты сделал первый кусочек? (Даже если это всего 5% от всего задания).</p>
+                        <p>Сразу же сделай вот что:</p>
+                    </div>
+                    <div class="duo-steps">
+                        <div class="duo-step">
+                            <span class="duo-step-number">👏</span>
+                            <span class="duo-step-text">Громко хлопни в ладоши или топни ногой</span>
+                        </div>
+                        <div class="duo-step">
+                            <span class="duo-step-number">🗣</span>
+                            <span class="duo-step-text">Крикни: «Я разделываю тушу! Я крутой!»</span>
+                        </div>
+                    </div>
+                    <div class="duo-task-text" style="margin-top: 16px;">
+                        <p>Половина страха ушла! 🎊</p>
+                    </div>
+                </div>
+
+                <div class="duo-card green" id="finishCheck" style="display: none;">
+                    <div class="duo-card-title"><span class="emoji">🏁</span> ФИНИШНАЯ ПРОВЕРКА</div>
+                    <div class="duo-text" style="text-align: center;">
+                        <p style="font-size: 18px; font-weight: 800; color: #166534;">🎉 ТЫ ГОТОВ К БОЮ! 🎉</p>
+                        <p>Теперь у тебя есть план.</p>
+                        <p>Возвращайся к <strong>Шагу 5</strong> каждый раз, когда будет нужно откусить новый кусочек.</p>
+                        <p style="margin-top: 16px; font-size: 16px;"><span class="duo-highlight purple">Ты справишься!</span> 💪</p>
+                    </div>
+                    <button class="btn-start-experiment" onclick="backToGallery()" style="margin-top: 20px; background: #166534; color: white;">🎯 Вернуться в галерею</button>
+                </div>
+                `
             },
             {
                 emoji: '🌈',
@@ -1100,7 +1943,6 @@
             
             document.getElementById('cardHeroImage').src = card.image;
             document.getElementById('cardEmoji').textContent = card.emoji;
-            document.getElementById('cardSubtitle').textContent = card.subtitle;
             document.getElementById('headerTitle').textContent = card.title;
             
             renderList('silaList', card.sila);
@@ -1156,6 +1998,16 @@
         }
 
         function openExperiment() {
+            const card = cardsData[currentCardIndex];
+            const content = card.experiment || `
+                <div class="duo-card">
+                    <div class="duo-card-title"><span class="emoji">🧪</span> Эксперимент</div>
+                    <div class="duo-text">
+                        <p>Этот раздел появится совсем скоро. Готовься к практическим заданиям!</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('experimentContent').innerHTML = content;
             document.getElementById('cardScreen').classList.remove('active');
             document.getElementById('experimentScreen').classList.add('active');
         }
@@ -1169,9 +2021,292 @@
             alert('Здесь будут загружаться новые карточки!');
         }
 
+        // Experiment status management
+        let timerInterval = null;
+        let timerSeconds = 1200; // 20 minutes
+
+        function getExperimentStatusKey(cardIndex) {
+            return `adhd_experiment_${cardIndex}_status`;
+        }
+
+        function getExperimentDataKey(cardIndex) {
+            return `adhd_experiment_${cardIndex}_data`;
+        }
+
+        function saveExperimentStatus(cardIndex, status) {
+            localStorage.setItem(getExperimentStatusKey(cardIndex), status);
+            updateGalleryExperimentBadge(cardIndex);
+        }
+
+        function getExperimentStatus(cardIndex) {
+            return localStorage.getItem(getExperimentStatusKey(cardIndex)) || 'none';
+        }
+
+        function saveExperimentData(cardIndex, data) {
+            localStorage.setItem(getExperimentDataKey(cardIndex), JSON.stringify(data));
+        }
+
+        function getExperimentData(cardIndex) {
+            const data = localStorage.getItem(getExperimentDataKey(cardIndex));
+            return data ? JSON.parse(data) : null;
+        }
+
+        function updateGalleryExperimentBadge(cardIndex) {
+            const status = getExperimentStatus(cardIndex);
+            const cardElement = document.querySelector(`.gallery-card[onclick="openCard(${cardIndex})"] .gallery-card-content`);
+            
+            if (!cardElement) return;
+
+            const existingBadge = cardElement.querySelector('.card-status-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+
+            if (status === 'running') {
+                const badge = document.createElement('div');
+                badge.className = 'card-status-badge';
+                badge.textContent = '⏳ Идёт эксперимент';
+                cardElement.appendChild(badge);
+            } else if (status === 'completed') {
+                const badge = document.createElement('div');
+                badge.className = 'card-status-badge completed';
+                badge.textContent = '✓ Выполнено';
+                cardElement.appendChild(badge);
+            }
+        }
+
+        function startInteractiveExperiment(cardIndex) {
+            currentCardIndex = cardIndex;
+            saveExperimentStatus(cardIndex, 'running');
+            
+            timerSeconds = 1200; // Reset timer to 20 minutes
+            
+            const html = `
+                <div class="interactive-experiment">
+                    <div class="interactive-title">🔍 Охота на "Вау!"</div>
+                    
+                    <div class="moments-section">
+                        <div class="section-label">Шаг 1: Запиши три момента, от которых вспыхивает "Вау!"</div>
+                        <div class="moment-input-wrapper">
+                            <input type="text" class="moment-input" id="moment1" placeholder="Первый момент..." />
+                        </div>
+                        <div class="moment-input-wrapper">
+                            <input type="text" class="moment-input" id="moment2" placeholder="Второй момент..." />
+                        </div>
+                        <div class="moment-input-wrapper">
+                            <input type="text" class="moment-input" id="moment3" placeholder="Третий момент..." />
+                        </div>
+                    </div>
+
+                    <div class="brightest-section">
+                        <div class="brightest-question">Шаг 2: Выбери самый яркий момент</div>
+                        <div class="brightest-options">
+                            <div class="brightest-option" onclick="selectBrightest(0)">
+                                <span class="brightest-flame">🔥</span>
+                                <span class="brightest-text" id="brightest-text-0">Первый момент</span>
+                                <div class="brightest-radio"></div>
+                            </div>
+                            <div class="brightest-option" onclick="selectBrightest(1)">
+                                <span class="brightest-flame">🔥</span>
+                                <span class="brightest-text" id="brightest-text-1">Второй момент</span>
+                                <div class="brightest-radio"></div>
+                            </div>
+                            <div class="brightest-option" onclick="selectBrightest(2)">
+                                <span class="brightest-flame">🔥</span>
+                                <span class="brightest-text" id="brightest-text-2">Третий момент</span>
+                                <div class="brightest-radio"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timer-section">
+                        <div class="timer-label">Шаг 3: Микро-исследование (20 минут)</div>
+                        <div class="timer-display" id="timerDisplay">20:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn active" id="timerStartBtn" onclick="toggleTimer()">Запустить</button>
+                            <button class="timer-btn" id="timerResetBtn" onclick="resetTimer()">Сброс</button>
+                        </div>
+                    </div>
+
+                    <div class="curiosity-section">
+                        <div class="curiosity-question">Любопытство загорелось? 🔥</div>
+                        <div class="curiosity-buttons">
+                            <button class="curiosity-btn yes" onclick="completeExperiment(${cardIndex}, true)">ДА! 🚀</button>
+                            <button class="curiosity-btn no" onclick="completeExperiment(${cardIndex}, false)">нет 😞</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('experimentContent').innerHTML = html;
+            document.getElementById('cardScreen').classList.remove('active');
+            document.getElementById('experimentScreen').classList.add('active');
+
+            // Setup input listeners for brightest option updates
+            setTimeout(() => {
+                const input1 = document.getElementById('moment1');
+                const input2 = document.getElementById('moment2');
+                const input3 = document.getElementById('moment3');
+                
+                if (input1) input1.addEventListener('input', updateBrightestOptions);
+                if (input2) input2.addEventListener('input', updateBrightestOptions);
+                if (input3) input3.addEventListener('input', updateBrightestOptions);
+
+                updateBrightestOptions();
+            }, 10);
+        }
+
+        function updateBrightestOptions() {
+            const moment1Input = document.getElementById('moment1');
+            const moment2Input = document.getElementById('moment2');
+            const moment3Input = document.getElementById('moment3');
+            
+            // Check if elements exist before updating
+            if (!moment1Input || !moment2Input || !moment3Input) return;
+
+            const moment1 = moment1Input.value || 'Первый момент';
+            const moment2 = moment2Input.value || 'Второй момент';
+            const moment3 = moment3Input.value || 'Третий момент';
+
+            const text0 = document.getElementById('brightest-text-0');
+            const text1 = document.getElementById('brightest-text-1');
+            const text2 = document.getElementById('brightest-text-2');
+
+            if (text0) text0.textContent = moment1;
+            if (text1) text1.textContent = moment2;
+            if (text2) text2.textContent = moment3;
+        }
+
+        let selectedBrightestIndex = null;
+
+        function selectBrightest(index) {
+            document.querySelectorAll('.brightest-option').forEach((option, i) => {
+                if (i === index) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+            selectedBrightestIndex = index;
+        }
+
+        function toggleTimer() {
+            const btn = document.getElementById('timerStartBtn');
+            
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                btn.textContent = 'Продолжить';
+            } else {
+                btn.textContent = 'Пауза';
+                timerInterval = setInterval(() => {
+                    timerSeconds--;
+                    
+                    const minutes = Math.floor(timerSeconds / 60);
+                    const seconds = timerSeconds % 60;
+                    document.getElementById('timerDisplay').textContent = 
+                        `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+                    if (timerSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        document.getElementById('timerDisplay').textContent = '0:00';
+                        btn.textContent = 'Запустить';
+                        // Show alert
+                        alert('Время истекло! 20 минут микро-исследования завершены.');
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            timerSeconds = 1200;
+            document.getElementById('timerDisplay').textContent = '20:00';
+            document.getElementById('timerStartBtn').textContent = 'Запустить';
+        }
+
+        // Step experiment toggle function
+        function toggleStepCheck(btn) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('.curiosity-btn');
+            buttons.forEach(b => {
+                b.style.opacity = '0.5';
+                b.style.transform = 'scale(0.95)';
+                b.classList.remove('selected');
+            });
+            btn.style.opacity = '1';
+            btn.style.transform = 'scale(1.05)';
+            btn.classList.add('selected');
+        }
+
+        // Check if all steps completed for Small Steps experiment (5 steps, no step 6 buttons)
+        function checkAllStepsCompleted() {
+            const stepCards = document.querySelectorAll('.duo-card .curiosity-btn.yes.selected');
+            if (stepCards.length >= 5) {
+                const finishCard = document.getElementById('finishCheck');
+                if (finishCard) {
+                    finishCard.style.display = 'block';
+                    finishCard.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+            }
+        }
+
+        // Alias functions for step 6
+        function celebrateStep6(btn) {
+            toggleStepCheck(btn);
+            checkAllStepsCompleted();
+        }
+
+        function markStep6No(btn) {
+            toggleStepCheck(btn);
+        }
+
+        function completeExperiment(cardIndex, curiosityLit) {
+            // Stop timer
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+            // Save experiment data
+            const moment1 = document.getElementById('moment1').value || '';
+            const moment2 = document.getElementById('moment2').value || '';
+            const moment3 = document.getElementById('moment3').value || '';
+
+            const experimentData = {
+                moments: [moment1, moment2, moment3],
+                brightestIndex: selectedBrightestIndex,
+                curiosityLit: curiosityLit,
+                completedAt: new Date().toISOString()
+            };
+
+            saveExperimentData(cardIndex, experimentData);
+            saveExperimentStatus(cardIndex, 'completed');
+
+            // Show completion message
+            if (curiosityLit) {
+                alert('Отлично! 🎉 Твоё любопытство загорелось! Это твоя суперсила!');
+            } else {
+                alert('Спасибо за честность! 💭 Попробуй в следующий раз найти что-то, что действительно зажжёт твое любопытство.');
+            }
+
+            // Go back to gallery
+            backToGallery();
+        }
+
         // Initialize ratings display on page load
         document.addEventListener('DOMContentLoaded', function() {
             initGalleryRatings();
+            // Initialize experiment badges
+            cardsData.forEach((_, index) => {
+                updateGalleryExperimentBadge(index);
+            });
         });
     </script>
 </body>
