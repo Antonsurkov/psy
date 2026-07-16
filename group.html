@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Клуб «Нейроотличники» — Антон Сурков</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: calc(var(--sp) * 3);
+        margin-top: calc(var(--sp) * 4);
+      }
+      .principle-card {
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: var(--r);
+        padding: calc(var(--sp) * 4);
+      }
+      .principle-card h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--c-accent);
+        margin-bottom: calc(var(--sp) * 1.5);
+      }
+      .principle-card p {
+        font-size: 0.92rem;
+        color: var(--c-muted);
+        line-height: 1.65;
+      }
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--sp) * 3);
+        margin-top: calc(var(--sp) * 4);
+      }
+      .timeline-item {
+        display: flex;
+        gap: calc(var(--sp) * 3);
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: var(--r);
+        padding: calc(var(--sp) * 4);
+      }
+      .timeline-time {
+        flex-shrink: 0;
+        width: 100px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--c-accent);
+        padding-top: 2px;
+      }
+      .timeline-content h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--c-text);
+        margin-bottom: calc(var(--sp));
+      }
+      .timeline-content p {
+        font-size: 0.95rem;
+        color: var(--c-muted);
+        line-height: 1.6;
+      }
+      .topics-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: calc(var(--sp) * 4);
+        font-size: 0.92rem;
+      }
+      .topics-table th,
+      .topics-table td {
+        padding: calc(var(--sp) * 2);
+        text-align: left;
+        border-bottom: 1px solid var(--c-border);
+      }
+      .topics-table th {
+        font-weight: 600;
+        color: var(--c-accent);
+        background: rgba(45,106,79,.06);
+      }
+      .topics-table td {
+        color: var(--c-text);
+      }
+      .topics-table tr:hover {
+        background: rgba(45,106,79,.03);
+      }
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--sp) * 2);
+        margin-top: calc(var(--sp) * 4);
+      }
+      .faq-item {
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: var(--r);
+        padding: calc(var(--sp) * 4);
+      }
+      .faq-item h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--c-text);
+        margin-bottom: calc(var(--sp) * 1.5);
+      }
+      .faq-item p {
+        font-size: 0.95rem;
+        color: var(--c-muted);
+        line-height: 1.65;
+      }
+      .announcement-box {
+        background: var(--c-accent);
+        color: #fff;
+        border-radius: var(--r);
+        padding: calc(var(--sp) * 6);
+        margin-top: calc(var(--sp) * 4);
+      }
+      .announcement-box p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        opacity: 0.95;
+      }
+      .announcement-box strong {
+        display: block;
+        font-size: 1.3rem;
+        margin-bottom: calc(var(--sp) * 2);
+        font-family: var(--f-serif);
+      }
+      @media (max-width: 768px) {
+        .timeline-item {
+          flex-direction: column;
+          gap: calc(var(--sp));
+        }
+        .timeline-time {
+          width: auto;
+        }
+        .topics-table {
+          font-size: 0.85rem;
+        }
+        .topics-table th,
+        .topics-table td {
+          padding: calc(var(--sp));
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <p class="hero-label">Группа поддержки · Онлайн</p>
+            <h1 class="hero-title">Клуб «Нейроотличники»</h1>
+            <p class="hero-sub">Группа поддержки и обмена навыками для нейроотличных людей. Здесь нейроотличность перестаёт быть проблемой, которую нужно решать, и становится контекстом, который можно исследовать.</p>
+            <div style="display: flex; gap: calc(var(--sp) * 2); flex-wrap: wrap;">
+              <a href="#contact" class="btn-primary">Записаться на встречу</a>
+              <a href="index.html" class="btn-secondary" style="margin-top: 0;">На главную</a>
+            </div>
+          </div>
+          <div class="hero-photo">
+            <img src="IMG_0315.jpg" alt="Клуб Нейроотличники" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-tag">Миссия</p>
+        <h2 class="section-title">Не исправляем — исследуем</h2>
+        <p class="section-lead">Мы не «чиним» СДВГ, аутизм или другие особенности. Мы учимся замечать, как устроены наше внимание, энергия, коммуникация и отдых, — и собираем рабочие стратегии, которые помогают именно нам.</p>
+        
+        <div class="announcement-box">
+          <strong>Клуб для нейроотличных людей: не «как стать нормальным», а «как жить своим умом и телом»</strong>
+          <p>Это пространство, где можно перестать маскироваться и начать исследовать себя. Мы не чиним СДВГ, аутизм и другие нейроотличия. Мы не учим быть «удобными» и не раздаём советы без спроса. Здесь можно молчать, путаться, опаздывать, выключать камеру, возвращаться после паузы — и всё это нормально.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="section">
+      <div class="container">
+        <p class="section-tag">Принципы</p>
+        <h2 class="section-title">Как устроен клуб</h2>
+        <p class="section-lead">Встречи работают по правилам, которые создают безопасное и предсказуемое пространство.</p>
+        
+        <div class="principles-grid">
+          <div class="principle-card">
+            <h3>Не исправляем — исследуем</h3>
+            <p>Мы не пытаемся сделать участников «нормальнее» или удобнее. Мы изучаем свои паттерны.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Участие по ресурсу</h3>
+            <p>Можно говорить, молчать, писать в чат, выключать камеру, уходить и возвращаться.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Опыт важнее советов</h3>
+            <p>Делимся тем, что работает лично у нас, а не раздаём универсальные рецепты. Советы — только по запросу.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Конфиденциальность</h3>
+            <p>Личные истории и имена не выносятся за пределы встречи.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Без иерархии страдания</h3>
+            <p>Не сравниваем, у кого «настоящий» диагноз или «тяжелее» опыт. Диагноз не обязателен.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Структура вместо хаоса</h3>
+            <p>У каждой встречи есть понятный сценарий, тайминг и практический результат.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Маленькие шаги</h3>
+            <p>Мы не ждём прорывов. Достаточно унести с собой одну идею или одно действие.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Не терапия</h3>
+            <p>Клуб — поддержка и навигация, а не замена психотерапии, диагностики или лечения.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEETING STRUCTURE -->
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-tag">Формат встреч</p>
+        <h2 class="section-title">Как проходят встречи</h2>
+        <p class="section-lead">Длительность: 75–90 минут. Формат: онлайн (можно без камеры). Структура повторяется от встречи к встрече — это создаёт предсказуемость.</p>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-time">0–10 мин</div>
+            <div class="timeline-content">
+              <h4>Приземление и чек-ин</h4>
+              <p>Напоминаем правила. Короткий круг: «Какая сейчас батарейка?», «С каким вопросом пришли?» (до 1 минуты на человека).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">10–20 мин</div>
+            <div class="timeline-content">
+              <h4>Мини-ввод (Skill-sharing)</h4>
+              <p>Одна идея по теме: миф → что на самом деле → как проявляется у нейроотличных → один инструмент.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">20–45 мин</div>
+            <div class="timeline-content">
+              <h4>Обмен опытом</h4>
+              <p>Общий вопрос для всех. Формула ответа: «Что было → что я чувствовал → что сработало / не сработало».</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">45–65 мин</div>
+            <div class="timeline-content">
+              <h4>Skill-sharing участников</h4>
+              <p>Каждый делится одной личной практикой. Ведущий записывает идеи на доске.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">65–80 мин</div>
+            <div class="timeline-content">
+              <h4>Личная адаптация</h4>
+              <p>Каждый отвечает себе: «Что подходит? Что не подходит? Что попробую до следующей встречи?» (действие на &lt;15 минут).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">80–90 мин</div>
+            <div class="timeline-content">
+              <h4>Закрытие</h4>
+              <p>Короткий круг: «Сегодня я ухожу с…». Ведущий присылает доску, список инструментов и вопрос для наблюдения.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICS -->
+    <section class="section">
+      <div class="container">
+        <p class="section-tag">Темы</p>
+        <h2 class="section-title">Примеры тем встреч</h2>
+        <p class="section-lead">Каждая тема идёт по одному шаблону: разбираем миф, изучаем навык, получаем практический инструмент.</p>
+        
+        <table class="topics-table">
+          <thead>
+            <tr>
+              <th>Тема</th>
+              <th>Миф</th>
+              <th>Навык</th>
+              <th>Практика</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Карьерная сверхфокусировка</strong></td>
+              <td>«Если нравится работа — можно работать без ограничений»</td>
+              <td>Замечать, когда гиперфокус перестаёт приносить результат</td>
+              <td>Карта «что я приобретаю / что теряю»</td>
+            </tr>
+            <tr>
+              <td><strong>Хороший отдых</strong></td>
+              <td>«Настоящий отдых — ничего не делать»</td>
+              <td>Различать физическое, когнитивное, эмоциональное и сенсорное истощение</td>
+              <td>Подобрать свой способ восстановления для каждого типа</td>
+            </tr>
+            <tr>
+              <td><strong>Апатия</strong></td>
+              <td>«Из апатии надо себя вытаскивать»</td>
+              <td>Отличать апатию-истощение от прокрастинации</td>
+              <td>Карта «что сейчас пытается защитить моя нервная система?»</td>
+            </tr>
+            <tr>
+              <td><strong>Коммуникация</strong></td>
+              <td>«Достаточно просто быть собой»</td>
+              <td>Переводить свои потребности в форму, понятную собеседнику</td>
+              <td>Шаблон «что я хочу сказать → что услышат → как сформулировать яснее»</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-tag">FAQ</p>
+        <h2 class="section-title">Вопросы и ответы</h2>
+        
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>У меня нет официального диагноза. Мне можно?</h4>
+            <p>Да. Клуб открыт для людей с диагнозом, самодиагностикой и устойчивым узнаванием себя. Мы не ставим диагнозы и не спорим о «настоящести».</p>
+          </div>
+          <div class="faq-item">
+            <h4>Я боюсь, что это будет культ продуктивности</h4>
+            <p>Нет. Мы не учим быть эффективнее любой ценой. Мы исследуем, как не выгорать и жить устойчивее.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Я не люблю групповые форматы</h4>
+            <p>Можно прийти просто послушать, отвечать в чате или вообще взять только структуру и упражнения.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Меня будут спасать или учить жить?</h4>
+            <p>Нет. По умолчанию мы делимся опытом, а не даём советы. Совет — только по явному запросу участника.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Я боюсь перегрузиться чужими историями</h4>
+            <p>У нас строгий тайминг, модерация и право не углубляться. Мы не делаем из встречи эмоциональную воронку.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Что если я приду в плохом состоянии?</h4>
+            <p>Вас не будут подталкивать к рывку. Поможем назвать состояние и найти минимально посильный шаг.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Мне тяжело быть регулярным, я выпадаю</h4>
+            <p>Встречи автономны. Можно возвращаться после паузы без объяснений и стыда.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Это заменит мне терапию?</h4>
+            <p>Нет. Клуб даёт язык, поддержку и инструменты, но не заменяет психотерапию, диагностику и лечение. При тяжёлых состояниях обращайтесь к специалистам.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container contact-wrap">
+        <p class="section-tag">Запись</p>
+        <h2 class="section-title">Присоединиться к клубу</h2>
+        <p class="section-lead" style="margin-inline: auto;">Напишите, чтобы узнать расписание ближайших встреч и записаться.</p>
+        <div class="contact-list">
+          <a href="https://t.me/antonsurkov" class="contact-link" target="_blank" rel="noopener">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 7.13-1.685 7.94c-.126.56-.456.697-.924.433l-2.56-1.887-1.235 1.19c-.137.136-.252.25-.517.25l.185-2.614 4.77-4.307c.207-.185-.045-.288-.322-.103L8.59 14.453l-2.514-.784c-.546-.17-.558-.546.114-.808l9.818-3.787c.455-.165.854.1.922.056z" fill="currentColor"/></svg>
+            @antonsurkov
+          </a>
+          <a href="tel:+79936236733" class="contact-link">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>
+            +7 993 623 67 33
+          </a>
+          <a href="mailto:surokne@gmail.com" class="contact-link">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
+            surokne@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Антон Сурков · Клуб «Нейроотличники»</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
